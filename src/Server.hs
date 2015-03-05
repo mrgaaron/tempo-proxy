@@ -39,7 +39,7 @@ castSnapMethod DELETE = Client.DELETE
 proxy :: Request -> Method -> L.ByteString -> IO (Client.Response, S.ByteString)
 proxy req method body = do 
   let path = rqURI req
-  c <- Client.openConnection "https://api.tempo-db.com" 80
+  c <- Client.openConnection "api.tempo-db.com" 443
   q <- Client.buildRequest $ do
     Client.http (castSnapMethod method) path
     forM_ (listHeaders req) $ \(k,v) -> do
